@@ -1,0 +1,67 @@
+{
+  // Editor Ayarları
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.minimap.enabled": true,
+  "editor.wordWrap": "on",
+
+  // Preview modunu kapatma (dosyaları direkt açma)
+  "workbench.editor.enablePreview": false,
+
+  // ESLint ayarları
+  "eslint.format.enable": true,
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+
+  // TypeScript path alias desteği (monorepo için kritik)
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.suggest.paths": true,
+  "typescript.suggest.autoImports": true,
+
+  // Git ayarları
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "git.autoStash": true,
+
+  // Tailwind utility fonksiyonlarda class tanıma
+  "tailwindCSS.experimental.configFile": "packages/ui/styles/global.css",
+  "tailwindCSS.classFunctions": ["cva", "cx", "cn"],
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.experimental.classRegex": [
+    "className: '(.+)",
+    "className:'(.+)",
+    "className:\"(.+)",
+    "className: \"(.+)",
+    ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*)[\"'`]"],
+    ["cx\\(([^)]*)\\)", "[\"'`]([^\"'`]*)[\"'`]"],
+    ["cva\\(([^)]*)\\)", "['\"]([^'\"]*)['\"]"]
+  ],
+
+  // Explorer'da gereksiz dosyaları gizleme
+  "files.exclude": {
+    // "**/node_modules": true,
+    // "**/dist": true,
+    // "**/.next": true,
+    // "**/.turbo": true
+  },
+
+  // Search ayarları
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist/**": true,
+    "**/.next": true,
+    "**/.turbo": true
+  },
+
+  // File watching ayarları (performans için)
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.turbo/**": true
+  }
+}

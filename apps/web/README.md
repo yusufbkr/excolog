@@ -1,0 +1,1 @@
+- [ ] Advanced Filter için daha iyi bir ts yapısı kurmak gerekiyor.
