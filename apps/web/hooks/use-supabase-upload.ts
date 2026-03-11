@@ -6,7 +6,7 @@ import {
   useDropzone,
 } from "react-dropzone";
 
-import { AssetService } from "@excolog/api-hooks";
+import { getUploadAsset } from "@excolog/api-hooks";
 
 interface FileWithPreview extends File {
   preview?: string;
@@ -137,11 +137,18 @@ const useSupabaseUpload = (options: UseSupabaseUploadOptions) => {
     const responses = await Promise.all(
       filesToUpload.map(async (file) => {
         try {
-          const uploadData = getUploadUrl
-            ? await getUploadUrl(file.name)
-            : await AssetService.getUploadAsset({
+          let uploadData: GetUploadUrlResult | null | undefined;
+
+          if (getUploadUrl) {
+            uploadData = await getUploadUrl(file.name);
+          } else {
+            const { data } = await getUploadAsset({
+              query: {
                 filename: file.name,
-              });
+              },
+            });
+            uploadData = data;
+          }
 
           if (!uploadData?.url) {
             return {

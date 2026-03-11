@@ -1,34 +1,272 @@
-// generated with @7nohe/openapi-react-query-codegen@1.6.2 
+// generated with @7nohe/openapi-react-query-codegen@2.0.0
 
-import { UseQueryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { AssetService, OrganizationService, UserService } from "../requests/services.gen";
+import { type Options } from "@hey-api/client-fetch";
+import {
+  UseSuspenseQueryOptions,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
+import {
+  getAssetsAsset,
+  getAssetsAvatar,
+  getOrganizationBySlug,
+  getOrganizationBySlugExchangeRate,
+  getOrganizationBySlugMemberList,
+  getOrganizationList,
+  getPublicOrganizationBySlug,
+  getUploadAsset,
+  getUploadAvatar,
+  getUser,
+  getUserList,
+} from "../requests/services.gen";
+import {
+  GetAssetsAssetData,
+  GetAssetsAssetError,
+  GetAssetsAvatarData,
+  GetAssetsAvatarError,
+  GetOrganizationBySlugData,
+  GetOrganizationBySlugError,
+  GetOrganizationBySlugExchangeRateData,
+  GetOrganizationBySlugExchangeRateError,
+  GetOrganizationBySlugMemberListData,
+  GetOrganizationBySlugMemberListError,
+  GetOrganizationListError,
+  GetPublicOrganizationBySlugData,
+  GetPublicOrganizationBySlugError,
+  GetUploadAssetData,
+  GetUploadAssetError,
+  GetUploadAvatarData,
+  GetUploadAvatarError,
+  GetUserError,
+  GetUserListData,
+  GetUserListError,
+} from "../requests/types.gen";
 import * as Common from "./common";
-export const useOrganizationServiceGetPBySlugOrganizationSuspense = <TData = Common.OrganizationServiceGetPBySlugOrganizationDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ slug }: {
-  slug: string;
-}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseOrganizationServiceGetPBySlugOrganizationKeyFn({ slug }, queryKey), queryFn: () => OrganizationService.getPBySlugOrganization({ slug }) as TData, ...options });
-export const useOrganizationServiceGetOrganizationListSuspense = <TData = Common.OrganizationServiceGetOrganizationListDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>(queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseOrganizationServiceGetOrganizationListKeyFn(queryKey), queryFn: () => OrganizationService.getOrganizationList() as TData, ...options });
-export const useOrganizationServiceGetOrganizationBySlugSuspense = <TData = Common.OrganizationServiceGetOrganizationBySlugDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ slug }: {
-  slug: string;
-}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseOrganizationServiceGetOrganizationBySlugKeyFn({ slug }, queryKey), queryFn: () => OrganizationService.getOrganizationBySlug({ slug }) as TData, ...options });
-export const useOrganizationServiceGetOrganizationBySlugMemberListSuspense = <TData = Common.OrganizationServiceGetOrganizationBySlugMemberListDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ slug }: {
-  slug: string;
-}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseOrganizationServiceGetOrganizationBySlugMemberListKeyFn({ slug }, queryKey), queryFn: () => OrganizationService.getOrganizationBySlugMemberList({ slug }) as TData, ...options });
-export const useOrganizationServiceGetOrganizationBySlugExchangeRateSuspense = <TData = Common.OrganizationServiceGetOrganizationBySlugExchangeRateDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ slug }: {
-  slug: string;
-}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseOrganizationServiceGetOrganizationBySlugExchangeRateKeyFn({ slug }, queryKey), queryFn: () => OrganizationService.getOrganizationBySlugExchangeRate({ slug }) as TData, ...options });
-export const useAssetServiceGetAssetsAvatarSuspense = <TData = Common.AssetServiceGetAssetsAvatarDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ path }: {
-  path: string;
-}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseAssetServiceGetAssetsAvatarKeyFn({ path }, queryKey), queryFn: () => AssetService.getAssetsAvatar({ path }) as TData, ...options });
-export const useAssetServiceGetAssetsAssetSuspense = <TData = Common.AssetServiceGetAssetsAssetDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ path }: {
-  path: string;
-}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseAssetServiceGetAssetsAssetKeyFn({ path }, queryKey), queryFn: () => AssetService.getAssetsAsset({ path }) as TData, ...options });
-export const useAssetServiceGetUploadAvatarSuspense = <TData = Common.AssetServiceGetUploadAvatarDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ filename }: {
-  filename: string;
-}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseAssetServiceGetUploadAvatarKeyFn({ filename }, queryKey), queryFn: () => AssetService.getUploadAvatar({ filename }) as TData, ...options });
-export const useAssetServiceGetUploadAssetSuspense = <TData = Common.AssetServiceGetUploadAssetDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ filename }: {
-  filename: string;
-}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseAssetServiceGetUploadAssetKeyFn({ filename }, queryKey), queryFn: () => AssetService.getUploadAsset({ filename }) as TData, ...options });
-export const useUserServiceGetUserSuspense = <TData = Common.UserServiceGetUserDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>(queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseUserServiceGetUserKeyFn(queryKey), queryFn: () => UserService.getUser() as TData, ...options });
-export const useUserServiceGetUserListSuspense = <TData = Common.UserServiceGetUserListDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ search }: {
-  search?: string;
-} = {}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseUserServiceGetUserListKeyFn({ search }, queryKey), queryFn: () => UserService.getUserList({ search }) as TData, ...options });
+export const useGetPublicOrganizationBySlugSuspense = <
+  TData = NonNullable<Common.GetPublicOrganizationBySlugDefaultResponse>,
+  TError = GetPublicOrganizationBySlugError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<GetPublicOrganizationBySlugData, true>,
+  queryKey?: TQueryKey,
+  options?: Omit<
+    UseSuspenseQueryOptions<TData, TError>,
+    "queryKey" | "queryFn"
+  >,
+) =>
+  useSuspenseQuery<TData, TError>({
+    queryKey: Common.UseGetPublicOrganizationBySlugKeyFn(
+      clientOptions,
+      queryKey,
+    ),
+    queryFn: () =>
+      getPublicOrganizationBySlug({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetAssetsAvatarSuspense = <
+  TData = NonNullable<Common.GetAssetsAvatarDefaultResponse>,
+  TError = GetAssetsAvatarError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<GetAssetsAvatarData, true>,
+  queryKey?: TQueryKey,
+  options?: Omit<
+    UseSuspenseQueryOptions<TData, TError>,
+    "queryKey" | "queryFn"
+  >,
+) =>
+  useSuspenseQuery<TData, TError>({
+    queryKey: Common.UseGetAssetsAvatarKeyFn(clientOptions, queryKey),
+    queryFn: () =>
+      getAssetsAvatar({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetAssetsAssetSuspense = <
+  TData = NonNullable<Common.GetAssetsAssetDefaultResponse>,
+  TError = GetAssetsAssetError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<GetAssetsAssetData, true>,
+  queryKey?: TQueryKey,
+  options?: Omit<
+    UseSuspenseQueryOptions<TData, TError>,
+    "queryKey" | "queryFn"
+  >,
+) =>
+  useSuspenseQuery<TData, TError>({
+    queryKey: Common.UseGetAssetsAssetKeyFn(clientOptions, queryKey),
+    queryFn: () =>
+      getAssetsAsset({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetUserSuspense = <
+  TData = NonNullable<Common.GetUserDefaultResponse>,
+  TError = GetUserError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<unknown, true> = {},
+  queryKey?: TQueryKey,
+  options?: Omit<
+    UseSuspenseQueryOptions<TData, TError>,
+    "queryKey" | "queryFn"
+  >,
+) =>
+  useSuspenseQuery<TData, TError>({
+    queryKey: Common.UseGetUserKeyFn(clientOptions, queryKey),
+    queryFn: () =>
+      getUser({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetUserListSuspense = <
+  TData = NonNullable<Common.GetUserListDefaultResponse>,
+  TError = GetUserListError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<GetUserListData, true> = {},
+  queryKey?: TQueryKey,
+  options?: Omit<
+    UseSuspenseQueryOptions<TData, TError>,
+    "queryKey" | "queryFn"
+  >,
+) =>
+  useSuspenseQuery<TData, TError>({
+    queryKey: Common.UseGetUserListKeyFn(clientOptions, queryKey),
+    queryFn: () =>
+      getUserList({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetUploadAvatarSuspense = <
+  TData = NonNullable<Common.GetUploadAvatarDefaultResponse>,
+  TError = GetUploadAvatarError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<GetUploadAvatarData, true>,
+  queryKey?: TQueryKey,
+  options?: Omit<
+    UseSuspenseQueryOptions<TData, TError>,
+    "queryKey" | "queryFn"
+  >,
+) =>
+  useSuspenseQuery<TData, TError>({
+    queryKey: Common.UseGetUploadAvatarKeyFn(clientOptions, queryKey),
+    queryFn: () =>
+      getUploadAvatar({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetUploadAssetSuspense = <
+  TData = NonNullable<Common.GetUploadAssetDefaultResponse>,
+  TError = GetUploadAssetError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<GetUploadAssetData, true>,
+  queryKey?: TQueryKey,
+  options?: Omit<
+    UseSuspenseQueryOptions<TData, TError>,
+    "queryKey" | "queryFn"
+  >,
+) =>
+  useSuspenseQuery<TData, TError>({
+    queryKey: Common.UseGetUploadAssetKeyFn(clientOptions, queryKey),
+    queryFn: () =>
+      getUploadAsset({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetOrganizationListSuspense = <
+  TData = NonNullable<Common.GetOrganizationListDefaultResponse>,
+  TError = GetOrganizationListError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<unknown, true> = {},
+  queryKey?: TQueryKey,
+  options?: Omit<
+    UseSuspenseQueryOptions<TData, TError>,
+    "queryKey" | "queryFn"
+  >,
+) =>
+  useSuspenseQuery<TData, TError>({
+    queryKey: Common.UseGetOrganizationListKeyFn(clientOptions, queryKey),
+    queryFn: () =>
+      getOrganizationList({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetOrganizationBySlugSuspense = <
+  TData = NonNullable<Common.GetOrganizationBySlugDefaultResponse>,
+  TError = GetOrganizationBySlugError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<GetOrganizationBySlugData, true>,
+  queryKey?: TQueryKey,
+  options?: Omit<
+    UseSuspenseQueryOptions<TData, TError>,
+    "queryKey" | "queryFn"
+  >,
+) =>
+  useSuspenseQuery<TData, TError>({
+    queryKey: Common.UseGetOrganizationBySlugKeyFn(clientOptions, queryKey),
+    queryFn: () =>
+      getOrganizationBySlug({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetOrganizationBySlugMemberListSuspense = <
+  TData = NonNullable<Common.GetOrganizationBySlugMemberListDefaultResponse>,
+  TError = GetOrganizationBySlugMemberListError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<GetOrganizationBySlugMemberListData, true>,
+  queryKey?: TQueryKey,
+  options?: Omit<
+    UseSuspenseQueryOptions<TData, TError>,
+    "queryKey" | "queryFn"
+  >,
+) =>
+  useSuspenseQuery<TData, TError>({
+    queryKey: Common.UseGetOrganizationBySlugMemberListKeyFn(
+      clientOptions,
+      queryKey,
+    ),
+    queryFn: () =>
+      getOrganizationBySlugMemberList({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetOrganizationBySlugExchangeRateSuspense = <
+  TData = NonNullable<Common.GetOrganizationBySlugExchangeRateDefaultResponse>,
+  TError = GetOrganizationBySlugExchangeRateError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<GetOrganizationBySlugExchangeRateData, true>,
+  queryKey?: TQueryKey,
+  options?: Omit<
+    UseSuspenseQueryOptions<TData, TError>,
+    "queryKey" | "queryFn"
+  >,
+) =>
+  useSuspenseQuery<TData, TError>({
+    queryKey: Common.UseGetOrganizationBySlugExchangeRateKeyFn(
+      clientOptions,
+      queryKey,
+    ),
+    queryFn: () =>
+      getOrganizationBySlugExchangeRate({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });

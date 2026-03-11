@@ -9,12 +9,12 @@
     "hook:generate": "openapi-rq -i http://localhost:3001/doc -o ./src/generated --format=prettier"
   },
   "dependencies": {
-    "@hey-api/client-fetch": "^0.13.1",
+    "@hey-api/client-fetch": "^0.4.0",
     "@tanstack/react-query": "^5.90.21",
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@7nohe/openapi-react-query-codegen": "^1.6.2",
+    "@7nohe/openapi-react-query-codegen": "^2.0.0",
     "@excolog/typescript-config": "workspace:*",
     "typescript": "5.8.3"
   }

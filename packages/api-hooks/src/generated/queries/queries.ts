@@ -1,82 +1,484 @@
-// generated with @7nohe/openapi-react-query-codegen@1.6.2 
+// generated with @7nohe/openapi-react-query-codegen@2.0.0
 
-import { UseMutationOptions, UseQueryOptions, useMutation, useQuery } from "@tanstack/react-query";
-import { AssetService, OrganizationService, UserService } from "../requests/services.gen";
+import { type Options } from "@hey-api/client-fetch";
+import {
+  UseMutationOptions,
+  UseQueryOptions,
+  useMutation,
+  useQuery,
+} from "@tanstack/react-query";
+import {
+  deleteOrganizationBySlug,
+  deleteOrganizationBySlugMemberById,
+  getAssetsAsset,
+  getAssetsAvatar,
+  getOrganizationBySlug,
+  getOrganizationBySlugExchangeRate,
+  getOrganizationBySlugMemberList,
+  getOrganizationList,
+  getPublicOrganizationBySlug,
+  getUploadAsset,
+  getUploadAvatar,
+  getUser,
+  getUserList,
+  patchOrganizationBySlug,
+  patchUser,
+  postOrganization,
+  postOrganizationBySlugExchangeRateUpdate,
+  postOrganizationBySlugExchangeRateUpdateFromApi,
+  postOrganizationBySlugMember,
+} from "../requests/services.gen";
+import {
+  DeleteOrganizationBySlugData,
+  DeleteOrganizationBySlugError,
+  DeleteOrganizationBySlugMemberByIdData,
+  DeleteOrganizationBySlugMemberByIdError,
+  GetAssetsAssetData,
+  GetAssetsAssetError,
+  GetAssetsAvatarData,
+  GetAssetsAvatarError,
+  GetOrganizationBySlugData,
+  GetOrganizationBySlugError,
+  GetOrganizationBySlugExchangeRateData,
+  GetOrganizationBySlugExchangeRateError,
+  GetOrganizationBySlugMemberListData,
+  GetOrganizationBySlugMemberListError,
+  GetOrganizationListError,
+  GetPublicOrganizationBySlugData,
+  GetPublicOrganizationBySlugError,
+  GetUploadAssetData,
+  GetUploadAssetError,
+  GetUploadAvatarData,
+  GetUploadAvatarError,
+  GetUserError,
+  GetUserListData,
+  GetUserListError,
+  PatchOrganizationBySlugData,
+  PatchOrganizationBySlugError,
+  PatchUserData,
+  PatchUserError,
+  PostOrganizationBySlugExchangeRateUpdateData,
+  PostOrganizationBySlugExchangeRateUpdateError,
+  PostOrganizationBySlugExchangeRateUpdateFromApiData,
+  PostOrganizationBySlugExchangeRateUpdateFromApiError,
+  PostOrganizationBySlugMemberData,
+  PostOrganizationBySlugMemberError,
+  PostOrganizationData,
+  PostOrganizationError,
+} from "../requests/types.gen";
 import * as Common from "./common";
-export const useOrganizationServiceGetPBySlugOrganization = <TData = Common.OrganizationServiceGetPBySlugOrganizationDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ slug }: {
-  slug: string;
-}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useQuery<TData, TError>({ queryKey: Common.UseOrganizationServiceGetPBySlugOrganizationKeyFn({ slug }, queryKey), queryFn: () => OrganizationService.getPBySlugOrganization({ slug }) as TData, ...options });
-export const useOrganizationServiceGetOrganizationList = <TData = Common.OrganizationServiceGetOrganizationListDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>(queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useQuery<TData, TError>({ queryKey: Common.UseOrganizationServiceGetOrganizationListKeyFn(queryKey), queryFn: () => OrganizationService.getOrganizationList() as TData, ...options });
-export const useOrganizationServiceGetOrganizationBySlug = <TData = Common.OrganizationServiceGetOrganizationBySlugDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ slug }: {
-  slug: string;
-}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useQuery<TData, TError>({ queryKey: Common.UseOrganizationServiceGetOrganizationBySlugKeyFn({ slug }, queryKey), queryFn: () => OrganizationService.getOrganizationBySlug({ slug }) as TData, ...options });
-export const useOrganizationServiceGetOrganizationBySlugMemberList = <TData = Common.OrganizationServiceGetOrganizationBySlugMemberListDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ slug }: {
-  slug: string;
-}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useQuery<TData, TError>({ queryKey: Common.UseOrganizationServiceGetOrganizationBySlugMemberListKeyFn({ slug }, queryKey), queryFn: () => OrganizationService.getOrganizationBySlugMemberList({ slug }) as TData, ...options });
-export const useOrganizationServiceGetOrganizationBySlugExchangeRate = <TData = Common.OrganizationServiceGetOrganizationBySlugExchangeRateDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ slug }: {
-  slug: string;
-}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useQuery<TData, TError>({ queryKey: Common.UseOrganizationServiceGetOrganizationBySlugExchangeRateKeyFn({ slug }, queryKey), queryFn: () => OrganizationService.getOrganizationBySlugExchangeRate({ slug }) as TData, ...options });
-export const useAssetServiceGetAssetsAvatar = <TData = Common.AssetServiceGetAssetsAvatarDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ path }: {
-  path: string;
-}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useQuery<TData, TError>({ queryKey: Common.UseAssetServiceGetAssetsAvatarKeyFn({ path }, queryKey), queryFn: () => AssetService.getAssetsAvatar({ path }) as TData, ...options });
-export const useAssetServiceGetAssetsAsset = <TData = Common.AssetServiceGetAssetsAssetDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ path }: {
-  path: string;
-}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useQuery<TData, TError>({ queryKey: Common.UseAssetServiceGetAssetsAssetKeyFn({ path }, queryKey), queryFn: () => AssetService.getAssetsAsset({ path }) as TData, ...options });
-export const useAssetServiceGetUploadAvatar = <TData = Common.AssetServiceGetUploadAvatarDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ filename }: {
-  filename: string;
-}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useQuery<TData, TError>({ queryKey: Common.UseAssetServiceGetUploadAvatarKeyFn({ filename }, queryKey), queryFn: () => AssetService.getUploadAvatar({ filename }) as TData, ...options });
-export const useAssetServiceGetUploadAsset = <TData = Common.AssetServiceGetUploadAssetDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ filename }: {
-  filename: string;
-}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useQuery<TData, TError>({ queryKey: Common.UseAssetServiceGetUploadAssetKeyFn({ filename }, queryKey), queryFn: () => AssetService.getUploadAsset({ filename }) as TData, ...options });
-export const useUserServiceGetUser = <TData = Common.UserServiceGetUserDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>(queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useQuery<TData, TError>({ queryKey: Common.UseUserServiceGetUserKeyFn(queryKey), queryFn: () => UserService.getUser() as TData, ...options });
-export const useUserServiceGetUserList = <TData = Common.UserServiceGetUserListDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ search }: {
-  search?: string;
-} = {}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useQuery<TData, TError>({ queryKey: Common.UseUserServiceGetUserListKeyFn({ search }, queryKey), queryFn: () => UserService.getUserList({ search }) as TData, ...options });
-export const useOrganizationServicePostOrganization = <TData = Common.OrganizationServicePostOrganizationMutationResult, TError = unknown, TContext = unknown>(options?: Omit<UseMutationOptions<TData, TError, {
-  requestBody: { name: string; slug: string; avatarUrl?: string; fairDescription?: string; fairLocation?: string; fairStartDate?: string; fairEndDate?: string; };
-}, TContext>, "mutationFn">) => useMutation<TData, TError, {
-  requestBody: { name: string; slug: string; avatarUrl?: string; fairDescription?: string; fairLocation?: string; fairStartDate?: string; fairEndDate?: string; };
-}, TContext>({ mutationFn: ({ requestBody }) => OrganizationService.postOrganization({ requestBody }) as unknown as Promise<TData>, ...options });
-export const useOrganizationServicePostOrganizationBySlugMember = <TData = Common.OrganizationServicePostOrganizationBySlugMemberMutationResult, TError = unknown, TContext = unknown>(options?: Omit<UseMutationOptions<TData, TError, {
-  requestBody: { userId: string; };
-  slug: string;
-}, TContext>, "mutationFn">) => useMutation<TData, TError, {
-  requestBody: { userId: string; };
-  slug: string;
-}, TContext>({ mutationFn: ({ requestBody, slug }) => OrganizationService.postOrganizationBySlugMember({ requestBody, slug }) as unknown as Promise<TData>, ...options });
-export const useOrganizationServicePostOrganizationBySlugExchangeRateUpdate = <TData = Common.OrganizationServicePostOrganizationBySlugExchangeRateUpdateMutationResult, TError = unknown, TContext = unknown>(options?: Omit<UseMutationOptions<TData, TError, {
-  requestBody: { currency: "EUR" | "USD"; rate: number; };
-  slug: string;
-}, TContext>, "mutationFn">) => useMutation<TData, TError, {
-  requestBody: { currency: "EUR" | "USD"; rate: number; };
-  slug: string;
-}, TContext>({ mutationFn: ({ requestBody, slug }) => OrganizationService.postOrganizationBySlugExchangeRateUpdate({ requestBody, slug }) as unknown as Promise<TData>, ...options });
-export const useOrganizationServicePostOrganizationBySlugExchangeRateUpdateFromApi = <TData = Common.OrganizationServicePostOrganizationBySlugExchangeRateUpdateFromApiMutationResult, TError = unknown, TContext = unknown>(options?: Omit<UseMutationOptions<TData, TError, {
-  slug: string;
-}, TContext>, "mutationFn">) => useMutation<TData, TError, {
-  slug: string;
-}, TContext>({ mutationFn: ({ slug }) => OrganizationService.postOrganizationBySlugExchangeRateUpdateFromApi({ slug }) as unknown as Promise<TData>, ...options });
-export const useOrganizationServicePatchOrganizationBySlug = <TData = Common.OrganizationServicePatchOrganizationBySlugMutationResult, TError = unknown, TContext = unknown>(options?: Omit<UseMutationOptions<TData, TError, {
-  requestBody: { name?: string; slug?: string; avatarUrl?: string; };
-  slug: string;
-}, TContext>, "mutationFn">) => useMutation<TData, TError, {
-  requestBody: { name?: string; slug?: string; avatarUrl?: string; };
-  slug: string;
-}, TContext>({ mutationFn: ({ requestBody, slug }) => OrganizationService.patchOrganizationBySlug({ requestBody, slug }) as unknown as Promise<TData>, ...options });
-export const useUserServicePatchUser = <TData = Common.UserServicePatchUserMutationResult, TError = unknown, TContext = unknown>(options?: Omit<UseMutationOptions<TData, TError, {
-  requestBody: { name?: string; username?: string; language?: string; avatarUrl?: string; address?: string; city?: string; country?: string; postalCode?: string; };
-}, TContext>, "mutationFn">) => useMutation<TData, TError, {
-  requestBody: { name?: string; username?: string; language?: string; avatarUrl?: string; address?: string; city?: string; country?: string; postalCode?: string; };
-}, TContext>({ mutationFn: ({ requestBody }) => UserService.patchUser({ requestBody }) as unknown as Promise<TData>, ...options });
-export const useOrganizationServiceDeleteOrganizationBySlug = <TData = Common.OrganizationServiceDeleteOrganizationBySlugMutationResult, TError = unknown, TContext = unknown>(options?: Omit<UseMutationOptions<TData, TError, {
-  slug: string;
-}, TContext>, "mutationFn">) => useMutation<TData, TError, {
-  slug: string;
-}, TContext>({ mutationFn: ({ slug }) => OrganizationService.deleteOrganizationBySlug({ slug }) as unknown as Promise<TData>, ...options });
-export const useOrganizationServiceDeleteOrganizationBySlugMemberById = <TData = Common.OrganizationServiceDeleteOrganizationBySlugMemberByIdMutationResult, TError = unknown, TContext = unknown>(options?: Omit<UseMutationOptions<TData, TError, {
-  id: string;
-  slug: string;
-}, TContext>, "mutationFn">) => useMutation<TData, TError, {
-  id: string;
-  slug: string;
-}, TContext>({ mutationFn: ({ id, slug }) => OrganizationService.deleteOrganizationBySlugMemberById({ id, slug }) as unknown as Promise<TData>, ...options });
+export const useGetPublicOrganizationBySlug = <
+  TData = Common.GetPublicOrganizationBySlugDefaultResponse,
+  TError = GetPublicOrganizationBySlugError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<GetPublicOrganizationBySlugData, true>,
+  queryKey?: TQueryKey,
+  options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">,
+) =>
+  useQuery<TData, TError>({
+    queryKey: Common.UseGetPublicOrganizationBySlugKeyFn(
+      clientOptions,
+      queryKey,
+    ),
+    queryFn: () =>
+      getPublicOrganizationBySlug({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetAssetsAvatar = <
+  TData = Common.GetAssetsAvatarDefaultResponse,
+  TError = GetAssetsAvatarError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<GetAssetsAvatarData, true>,
+  queryKey?: TQueryKey,
+  options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">,
+) =>
+  useQuery<TData, TError>({
+    queryKey: Common.UseGetAssetsAvatarKeyFn(clientOptions, queryKey),
+    queryFn: () =>
+      getAssetsAvatar({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetAssetsAsset = <
+  TData = Common.GetAssetsAssetDefaultResponse,
+  TError = GetAssetsAssetError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<GetAssetsAssetData, true>,
+  queryKey?: TQueryKey,
+  options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">,
+) =>
+  useQuery<TData, TError>({
+    queryKey: Common.UseGetAssetsAssetKeyFn(clientOptions, queryKey),
+    queryFn: () =>
+      getAssetsAsset({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetUser = <
+  TData = Common.GetUserDefaultResponse,
+  TError = GetUserError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<unknown, true> = {},
+  queryKey?: TQueryKey,
+  options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">,
+) =>
+  useQuery<TData, TError>({
+    queryKey: Common.UseGetUserKeyFn(clientOptions, queryKey),
+    queryFn: () =>
+      getUser({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetUserList = <
+  TData = Common.GetUserListDefaultResponse,
+  TError = GetUserListError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<GetUserListData, true> = {},
+  queryKey?: TQueryKey,
+  options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">,
+) =>
+  useQuery<TData, TError>({
+    queryKey: Common.UseGetUserListKeyFn(clientOptions, queryKey),
+    queryFn: () =>
+      getUserList({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetUploadAvatar = <
+  TData = Common.GetUploadAvatarDefaultResponse,
+  TError = GetUploadAvatarError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<GetUploadAvatarData, true>,
+  queryKey?: TQueryKey,
+  options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">,
+) =>
+  useQuery<TData, TError>({
+    queryKey: Common.UseGetUploadAvatarKeyFn(clientOptions, queryKey),
+    queryFn: () =>
+      getUploadAvatar({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetUploadAsset = <
+  TData = Common.GetUploadAssetDefaultResponse,
+  TError = GetUploadAssetError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<GetUploadAssetData, true>,
+  queryKey?: TQueryKey,
+  options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">,
+) =>
+  useQuery<TData, TError>({
+    queryKey: Common.UseGetUploadAssetKeyFn(clientOptions, queryKey),
+    queryFn: () =>
+      getUploadAsset({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetOrganizationList = <
+  TData = Common.GetOrganizationListDefaultResponse,
+  TError = GetOrganizationListError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<unknown, true> = {},
+  queryKey?: TQueryKey,
+  options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">,
+) =>
+  useQuery<TData, TError>({
+    queryKey: Common.UseGetOrganizationListKeyFn(clientOptions, queryKey),
+    queryFn: () =>
+      getOrganizationList({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetOrganizationBySlug = <
+  TData = Common.GetOrganizationBySlugDefaultResponse,
+  TError = GetOrganizationBySlugError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<GetOrganizationBySlugData, true>,
+  queryKey?: TQueryKey,
+  options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">,
+) =>
+  useQuery<TData, TError>({
+    queryKey: Common.UseGetOrganizationBySlugKeyFn(clientOptions, queryKey),
+    queryFn: () =>
+      getOrganizationBySlug({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetOrganizationBySlugMemberList = <
+  TData = Common.GetOrganizationBySlugMemberListDefaultResponse,
+  TError = GetOrganizationBySlugMemberListError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<GetOrganizationBySlugMemberListData, true>,
+  queryKey?: TQueryKey,
+  options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">,
+) =>
+  useQuery<TData, TError>({
+    queryKey: Common.UseGetOrganizationBySlugMemberListKeyFn(
+      clientOptions,
+      queryKey,
+    ),
+    queryFn: () =>
+      getOrganizationBySlugMemberList({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const useGetOrganizationBySlugExchangeRate = <
+  TData = Common.GetOrganizationBySlugExchangeRateDefaultResponse,
+  TError = GetOrganizationBySlugExchangeRateError,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  clientOptions: Options<GetOrganizationBySlugExchangeRateData, true>,
+  queryKey?: TQueryKey,
+  options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">,
+) =>
+  useQuery<TData, TError>({
+    queryKey: Common.UseGetOrganizationBySlugExchangeRateKeyFn(
+      clientOptions,
+      queryKey,
+    ),
+    queryFn: () =>
+      getOrganizationBySlugExchangeRate({ ...clientOptions }).then(
+        (response) => response.data as TData,
+      ) as TData,
+    ...options,
+  });
+export const usePostOrganization = <
+  TData = Common.PostOrganizationMutationResult,
+  TError = PostOrganizationError,
+  TQueryKey extends Array<unknown> = unknown[],
+  TContext = unknown,
+>(
+  mutationKey?: TQueryKey,
+  options?: Omit<
+    UseMutationOptions<
+      TData,
+      TError,
+      Options<PostOrganizationData, true>,
+      TContext
+    >,
+    "mutationKey" | "mutationFn"
+  >,
+) =>
+  useMutation<TData, TError, Options<PostOrganizationData, true>, TContext>({
+    mutationKey: Common.UsePostOrganizationKeyFn(mutationKey),
+    mutationFn: (clientOptions) =>
+      postOrganization(clientOptions) as unknown as Promise<TData>,
+    ...options,
+  });
+export const usePostOrganizationBySlugMember = <
+  TData = Common.PostOrganizationBySlugMemberMutationResult,
+  TError = PostOrganizationBySlugMemberError,
+  TQueryKey extends Array<unknown> = unknown[],
+  TContext = unknown,
+>(
+  mutationKey?: TQueryKey,
+  options?: Omit<
+    UseMutationOptions<
+      TData,
+      TError,
+      Options<PostOrganizationBySlugMemberData, true>,
+      TContext
+    >,
+    "mutationKey" | "mutationFn"
+  >,
+) =>
+  useMutation<
+    TData,
+    TError,
+    Options<PostOrganizationBySlugMemberData, true>,
+    TContext
+  >({
+    mutationKey: Common.UsePostOrganizationBySlugMemberKeyFn(mutationKey),
+    mutationFn: (clientOptions) =>
+      postOrganizationBySlugMember(clientOptions) as unknown as Promise<TData>,
+    ...options,
+  });
+export const usePostOrganizationBySlugExchangeRateUpdate = <
+  TData = Common.PostOrganizationBySlugExchangeRateUpdateMutationResult,
+  TError = PostOrganizationBySlugExchangeRateUpdateError,
+  TQueryKey extends Array<unknown> = unknown[],
+  TContext = unknown,
+>(
+  mutationKey?: TQueryKey,
+  options?: Omit<
+    UseMutationOptions<
+      TData,
+      TError,
+      Options<PostOrganizationBySlugExchangeRateUpdateData, true>,
+      TContext
+    >,
+    "mutationKey" | "mutationFn"
+  >,
+) =>
+  useMutation<
+    TData,
+    TError,
+    Options<PostOrganizationBySlugExchangeRateUpdateData, true>,
+    TContext
+  >({
+    mutationKey:
+      Common.UsePostOrganizationBySlugExchangeRateUpdateKeyFn(mutationKey),
+    mutationFn: (clientOptions) =>
+      postOrganizationBySlugExchangeRateUpdate(
+        clientOptions,
+      ) as unknown as Promise<TData>,
+    ...options,
+  });
+export const usePostOrganizationBySlugExchangeRateUpdateFromApi = <
+  TData = Common.PostOrganizationBySlugExchangeRateUpdateFromApiMutationResult,
+  TError = PostOrganizationBySlugExchangeRateUpdateFromApiError,
+  TQueryKey extends Array<unknown> = unknown[],
+  TContext = unknown,
+>(
+  mutationKey?: TQueryKey,
+  options?: Omit<
+    UseMutationOptions<
+      TData,
+      TError,
+      Options<PostOrganizationBySlugExchangeRateUpdateFromApiData, true>,
+      TContext
+    >,
+    "mutationKey" | "mutationFn"
+  >,
+) =>
+  useMutation<
+    TData,
+    TError,
+    Options<PostOrganizationBySlugExchangeRateUpdateFromApiData, true>,
+    TContext
+  >({
+    mutationKey:
+      Common.UsePostOrganizationBySlugExchangeRateUpdateFromApiKeyFn(
+        mutationKey,
+      ),
+    mutationFn: (clientOptions) =>
+      postOrganizationBySlugExchangeRateUpdateFromApi(
+        clientOptions,
+      ) as unknown as Promise<TData>,
+    ...options,
+  });
+export const usePatchUser = <
+  TData = Common.PatchUserMutationResult,
+  TError = PatchUserError,
+  TQueryKey extends Array<unknown> = unknown[],
+  TContext = unknown,
+>(
+  mutationKey?: TQueryKey,
+  options?: Omit<
+    UseMutationOptions<TData, TError, Options<PatchUserData, true>, TContext>,
+    "mutationKey" | "mutationFn"
+  >,
+) =>
+  useMutation<TData, TError, Options<PatchUserData, true>, TContext>({
+    mutationKey: Common.UsePatchUserKeyFn(mutationKey),
+    mutationFn: (clientOptions) =>
+      patchUser(clientOptions) as unknown as Promise<TData>,
+    ...options,
+  });
+export const usePatchOrganizationBySlug = <
+  TData = Common.PatchOrganizationBySlugMutationResult,
+  TError = PatchOrganizationBySlugError,
+  TQueryKey extends Array<unknown> = unknown[],
+  TContext = unknown,
+>(
+  mutationKey?: TQueryKey,
+  options?: Omit<
+    UseMutationOptions<
+      TData,
+      TError,
+      Options<PatchOrganizationBySlugData, true>,
+      TContext
+    >,
+    "mutationKey" | "mutationFn"
+  >,
+) =>
+  useMutation<
+    TData,
+    TError,
+    Options<PatchOrganizationBySlugData, true>,
+    TContext
+  >({
+    mutationKey: Common.UsePatchOrganizationBySlugKeyFn(mutationKey),
+    mutationFn: (clientOptions) =>
+      patchOrganizationBySlug(clientOptions) as unknown as Promise<TData>,
+    ...options,
+  });
+export const useDeleteOrganizationBySlug = <
+  TData = Common.DeleteOrganizationBySlugMutationResult,
+  TError = DeleteOrganizationBySlugError,
+  TQueryKey extends Array<unknown> = unknown[],
+  TContext = unknown,
+>(
+  mutationKey?: TQueryKey,
+  options?: Omit<
+    UseMutationOptions<
+      TData,
+      TError,
+      Options<DeleteOrganizationBySlugData, true>,
+      TContext
+    >,
+    "mutationKey" | "mutationFn"
+  >,
+) =>
+  useMutation<
+    TData,
+    TError,
+    Options<DeleteOrganizationBySlugData, true>,
+    TContext
+  >({
+    mutationKey: Common.UseDeleteOrganizationBySlugKeyFn(mutationKey),
+    mutationFn: (clientOptions) =>
+      deleteOrganizationBySlug(clientOptions) as unknown as Promise<TData>,
+    ...options,
+  });
+export const useDeleteOrganizationBySlugMemberById = <
+  TData = Common.DeleteOrganizationBySlugMemberByIdMutationResult,
+  TError = DeleteOrganizationBySlugMemberByIdError,
+  TQueryKey extends Array<unknown> = unknown[],
+  TContext = unknown,
+>(
+  mutationKey?: TQueryKey,
+  options?: Omit<
+    UseMutationOptions<
+      TData,
+      TError,
+      Options<DeleteOrganizationBySlugMemberByIdData, true>,
+      TContext
+    >,
+    "mutationKey" | "mutationFn"
+  >,
+) =>
+  useMutation<
+    TData,
+    TError,
+    Options<DeleteOrganizationBySlugMemberByIdData, true>,
+    TContext
+  >({
+    mutationKey: Common.UseDeleteOrganizationBySlugMemberByIdKeyFn(mutationKey),
+    mutationFn: (clientOptions) =>
+      deleteOrganizationBySlugMemberById(
+        clientOptions,
+      ) as unknown as Promise<TData>,
+    ...options,
+  });

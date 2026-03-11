@@ -15,6 +15,7 @@ const PublicOrganizationResponseSchema = OrganizationSchema.pick({
 });
 
 export const route = createRoute({
+  operationId: "getPublicOrganizationBySlug",
   summary: "Get public organization by slug (avatar, name, slug)",
   path: routes.public.organization.bySlug.path,
   method: "get",
