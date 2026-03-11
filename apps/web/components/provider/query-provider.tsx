@@ -42,7 +42,7 @@ function makeQueryClient() {
       queries: {
         throwOnError: false,
         staleTime: 60 * 1000,
-        retry: 3,
+        retry: 2,
       },
     },
   });
