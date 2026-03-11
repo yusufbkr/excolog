@@ -36,7 +36,7 @@ function PageHeader({ title, parents, rightActions }: Props) {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href={"/"}>Turkish Technic</BreadcrumbLink>
+              <BreadcrumbLink href="/">Turkish Technic</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             {parents?.length &&

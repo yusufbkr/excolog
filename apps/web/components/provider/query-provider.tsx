@@ -12,8 +12,12 @@ import {
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ReactQueryStreamedHydration } from "@tanstack/react-query-next-experimental";
 
-import getErrorMessages from "@/utils/get-error-messages";
+import { OpenAPI } from "@excolog/api-hooks";
 import createToastMessages from "@excolog/ui/utils/create-toast-messages";
+
+import getErrorMessages from "@/utils/get-error-messages";
+
+OpenAPI.BASE = process.env.NEXT_PUBLIC_API_URL ?? "";
 
 function onError(error: Error) {
   const errorMessage =

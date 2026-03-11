@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { isHighlighted } from "@excolog/ui/components/highlighter";
 import { Input } from "@excolog/ui/components/input";
@@ -14,18 +14,18 @@ import useSidebarItems from "./use-sidebar-items";
 
 function MainSidebar() {
   const isUserPermissionsLoading = false;
-  const [activeItem, setActiveItem] = useState<string | null>(null);
+  const [activeItem, setActiveItem] = useState<string | null | undefined>(
+    undefined,
+  );
   const [searchQuery, setSearchQuery] = useState("");
   const items = useSidebarItems();
 
-  useEffect(() => {
-    const activeSidebarItem = items.find((item) => item.isActive);
-    if (!activeItem && activeSidebarItem) {
-      setActiveItem(
-        `${activeSidebarItem.title}-${activeSidebarItem.itemType}-${activeSidebarItem.route}`,
-      );
-    }
-  }, [items, activeItem]);
+  const activeSidebarItem = items.find((item) => item.isActive);
+  const effectiveActiveItem =
+    activeItem ??
+    (activeSidebarItem
+      ? `${activeSidebarItem.title}-${activeSidebarItem.itemType}-${activeSidebarItem.route}`
+      : null);
 
   return (
     <SidebarGroup className="py-0">
@@ -66,11 +66,17 @@ function MainSidebar() {
                 <SidebarItem
                   key={itemKey}
                   link={link}
-                  collapsed={activeItem === itemKey || isItemHighlighted}
+                  collapsed={
+                    effectiveActiveItem === itemKey || isItemHighlighted
+                  }
                   onClick={() =>
                     link.itemType === "sub-container" &&
                     link.subLinks.length &&
-                    setActiveItem((prev) => (prev === itemKey ? null : itemKey))
+                    setActiveItem((prev) =>
+                      (prev ?? effectiveActiveItem) === itemKey
+                        ? null
+                        : itemKey,
+                    )
                   }
                   searchQuery={searchQuery}
                 />

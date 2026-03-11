@@ -88,7 +88,7 @@ function ScrollIndicator({
         className,
         "pointer-events-none absolute z-20 bg-transparent",
         "flex size-6 items-center justify-center opacity-0 transition-opacity",
-        "before:bg-background before:blur-xs before:absolute before:inset-0 before:rounded-full before:content-['']",
+        "before:bg-background before:absolute before:inset-0 before:rounded-full before:blur-xs before:content-['']",
         animationClasses[position],
         shouldShow && "opacity-100",
       )}

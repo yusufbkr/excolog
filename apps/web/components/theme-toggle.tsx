@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useSyncExternalStore } from "react";
 
 import { useTheme } from "next-themes";
 
@@ -9,11 +9,14 @@ import { Switch } from "@excolog/ui/components/switch";
 
 function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(
+    (onStoreChange) => {
+      onStoreChange();
+      return () => {};
+    },
+    () => true,
+    () => false,
+  );
 
   if (!mounted) {
     return null;

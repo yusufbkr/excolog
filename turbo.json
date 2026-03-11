@@ -9,7 +9,12 @@
       "outputs": ["dist/**", ".next/**", "!.next/cache/**", ".vercel/output/**"]
     },
     "lint": {
+      "env": ["NODE_ENV"],
       "dependsOn": ["^lint"]
+    },
+    "lint:fix": {
+      "env": ["NODE_ENV"],
+      "dependsOn": ["^lint:fix"]
     },
     "check-types": {
       "dependsOn": ["^check-types"]
@@ -21,6 +26,9 @@
     },
     "db:generate": {
       "dependsOn": ["^db:generate"]
+    },
+    "hook:generate": {
+      "dependsOn": ["^hook:generate"]
     }
   }
 }

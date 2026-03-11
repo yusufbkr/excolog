@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, ComponentProps, useEffect, useState } from "react";
+import { ChangeEvent, ComponentProps } from "react";
 
 import { Input } from "@excolog/ui/components/input";
 import cn from "@excolog/ui/utils/cn";
@@ -24,10 +24,6 @@ function DurationInput({
   disabled = false,
   availableUnits = ["seconds", "minutes", "hours"],
 }: DurationInputProps) {
-  const [hours, setHours] = useState<number>(0);
-  const [minutes, setMinutes] = useState<number>(0);
-  const [seconds, setSeconds] = useState<number>(0);
-
   // Millisecond'den saat, dakika, saniye'ye çevir
   const convertFromMilliseconds = (milliseconds: number) => {
     const duration = dayjs.duration(milliseconds, "milliseconds");
@@ -43,32 +39,27 @@ function DurationInput({
     return Math.floor(duration.asMilliseconds());
   };
 
-  // Value değiştiğinde saat, dakika, saniye değerlerini güncelle
-  useEffect(() => {
-    const { hours: h, minutes: m, seconds: s } = convertFromMilliseconds(value);
-    setHours(h);
-    setMinutes(m);
-    setSeconds(s);
-  }, [value]);
+  // Value prop'undan saat, dakika, saniye değerlerini türet
+  const date = convertFromMilliseconds(value);
 
   const timeUnits = [
     {
       key: "hours" as const,
-      value: hours,
+      value: date.hours,
       label: "Saat",
       prefix: "sa",
-      max: 23,
+      max: Infinity, // Saat için bir üst sınır belirlemeyelim veya ihtiyaca göre ayarlanabilir
     },
     {
       key: "minutes" as const,
-      value: minutes,
+      value: date.minutes,
       label: "Dakika",
       prefix: "dk",
       max: 59,
     },
     {
       key: "seconds" as const,
-      value: seconds,
+      value: date.seconds,
       label: "Saniye",
       prefix: "sn",
       max: 59,
@@ -77,22 +68,25 @@ function DurationInput({
 
   const updateValue = (unit: TimeUnit, newValue: number) => {
     const options = timeUnits.find((option) => option.key === unit);
-    if (options?.max && options.max < newValue) return;
+    if (options && options.max !== undefined && options.max < newValue) return;
+
+    let newHours = date.hours;
+    let newMinutes = date.minutes;
+    let newSeconds = date.seconds;
 
     switch (unit) {
       case "hours":
-        setHours(newValue);
-        onChange?.(convertToMilliseconds(newValue, minutes, seconds));
+        newHours = newValue;
         break;
       case "minutes":
-        setMinutes(newValue);
-        onChange?.(convertToMilliseconds(hours, newValue, seconds));
+        newMinutes = newValue;
         break;
       case "seconds":
-        setSeconds(newValue);
-        onChange?.(convertToMilliseconds(hours, minutes, newValue));
+        newSeconds = newValue;
         break;
     }
+
+    onChange?.(convertToMilliseconds(newHours, newMinutes, newSeconds));
   };
 
   const handleChange = (unit: TimeUnit, e: ChangeEvent<HTMLInputElement>) => {
@@ -104,7 +98,11 @@ function DurationInput({
     e: React.KeyboardEvent<HTMLInputElement>,
   ) => {
     const currentValue =
-      unit === "hours" ? hours : unit === "minutes" ? minutes : seconds;
+      unit === "hours"
+        ? date.hours
+        : unit === "minutes"
+          ? date.minutes
+          : date.seconds;
     if (currentValue === 0 && /[0-9]/.test(e.key)) {
       e.preventDefault();
       updateValue(unit, parseInt(e.key, 10));
@@ -112,10 +110,9 @@ function DurationInput({
   };
 
   const handleBlur = () => {
-    const milliseconds = convertToMilliseconds(hours, minutes, seconds);
     onBlur?.({
       target: {
-        value: milliseconds.toString(),
+        value: value.toString(),
       },
     } as ChangeEvent<HTMLInputElement>);
   };
@@ -143,7 +140,7 @@ function DurationInput({
                   "text-center pr-8 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [-moz-appearance:textfield]",
               }}
             />
-            <span className="text-muted-foreground pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-xs">
+            <span className="text-muted-foreground pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-xs">
               {unit.prefix}
             </span>
           </div>

@@ -5,9 +5,11 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
-    "db:generate": "turbo run db:generate"
+    "db:generate": "turbo run db:generate",
+    "hook:generate": "turbo run hook:generate"
   },
   "devDependencies": {
     "prettier": "^3.6.2",

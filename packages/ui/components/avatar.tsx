@@ -22,7 +22,7 @@ function AvatarImage({
   src,
   ...props
 }: AvatarPrimitive.AvatarImageProps) {
-  const imageEndpoint = ''
+  const imageEndpoint = "";
   const imageUrl =
     typeof src === "string" && src.includes("http")
       ? src || ""
