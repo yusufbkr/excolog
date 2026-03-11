@@ -54,7 +54,7 @@ export const config = [
               position: "before",
             },
             {
-              pattern: "@repo/**",
+              pattern: "@excolog/**",
               group: "external",
               position: "after",
             },
@@ -65,7 +65,7 @@ export const config = [
             },
           ],
           groups: ["builtin", "external", "type", "object", "internal", "parent", "sibling", "index"],
-          pathGroupsExcludedImportTypes: ["react", "next", "@repo"],
+          pathGroupsExcludedImportTypes: ["react", "next", "@excolog"],
           "newlines-between": "always",
           alphabetize: {
             order: "asc",

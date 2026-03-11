@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-import { isHighlighted } from "@repo/ui/components/highlighter";
-import { Input } from "@repo/ui/components/input";
+import { isHighlighted } from "@excolog/ui/components/highlighter";
+import { Input } from "@excolog/ui/components/input";
 import {
   SidebarGroup,
   SidebarMenu,
   SidebarMenuItem,
-} from "@repo/ui/components/sidebar";
-import { Skeleton } from "@repo/ui/components/skeleton";
+} from "@excolog/ui/components/sidebar";
+import { Skeleton } from "@excolog/ui/components/skeleton";
 
 import SidebarItem from "./sidebar-item";
 import useSidebarItems from "./use-sidebar-items";

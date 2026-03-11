@@ -4,7 +4,7 @@ import * as React from "react";
 
 import * as RechartsPrimitive from "recharts";
 
-import cn from "@repo/ui/utils/cn";
+import cn from "@excolog/ui/utils/cn";
 
 import type {
   NameType,

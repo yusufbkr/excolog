@@ -2,8 +2,8 @@
 
 import { Drawer as DrawerPrimitive } from "vaul";
 
-import useIsMobile from "@repo/ui/hooks/use-is-mobile";
-import cn from "@repo/ui/utils/cn";
+import useIsMobile from "@excolog/ui/hooks/use-is-mobile";
+import cn from "@excolog/ui/utils/cn";
 
 function Drawer({
   ...props

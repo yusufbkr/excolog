@@ -1,10 +1,14 @@
-import { Hono } from 'hono'
-import { CONSTANT } from '@repo/constants'
+import { serve } from "@hono/node-server";
+import { createConfiguredApp } from "./app/index";
 
-const app = new Hono()
+const app = createConfiguredApp();
 
-app.get('/', (c) => {
-  return c.text(CONSTANT)
-})
+const port = process.env.PORT ? Number.parseInt(process.env.PORT) : 3001;
+console.log(`Server is running on http://localhost:${port}`);
 
-export default app
+serve({
+  fetch: app.fetch,
+  port,
+});
+
+export default app;

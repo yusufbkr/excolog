@@ -5,7 +5,7 @@ import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { cva } from "class-variance-authority";
 
-import cn from "@repo/ui/utils/cn";
+import cn from "@excolog/ui/utils/cn";
 
 type TabsVariant = "default" | "outline";
 

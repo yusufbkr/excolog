@@ -1,0 +1,358 @@
+generator client {
+  provider   = "prisma-client-js"
+  output     = "../src/generated/client"
+}
+
+generator zod {
+  provider         = "zod-prisma-types"
+  output           = "../src/generated/zod"
+  addIncludeType   = "false"
+  addSelectType    = "false"
+  createInputTypes = "false"
+  prismaClientPath = "../client/index.js"
+}
+
+generator kysely {
+  provider        = "prisma-kysely"
+  output          = "../src/generated/kysely"
+  enumFileName    = "enums.ts"
+  fileName        = "index.ts"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  directUrl         = env("DIRECT_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+// ------------------------------------------------------
+// SYSTEM & SAAS CORE
+// ------------------------------------------------------
+
+model User {
+  id                   String                   @id @default(cuid())
+  createdAt            DateTime                 @default(now())
+  updatedAt            DateTime                 @updatedAt
+  name                 String?
+  email                String?                  @unique
+  isSuperAdmin         Boolean                  @default(false)
+  language             String                   @default("tr")
+  avatarUrl            String?
+  address              String?
+  city                 String?
+  country              String?
+  postalCode           String?
+  username             String?                  @unique
+  organizationsCreated Organization[]           @relation("OrganizationCreator")
+  organizationsOwned   Organization[]           @relation("OrganizationOwner")
+  memberships          OrganizationMembership[]
+
+  // Audit Relations
+  actorsCreated       Actor[]
+  recordsOwned        Record[]      @relation("RecordOwner")
+  recordsCreated      Record[]      @relation("RecordCreator")
+  sharesGiven         RecordShare[] @relation("RecordSharedBy")
+  sharesReceived      RecordShare[] @relation("RecordSharedWith")
+  transactionsCreated Transaction[]
+
+  @@index([email], map: "idx_user_email")
+  @@index([username], map: "idx_user_username")
+}
+
+model Organization {
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  name            String
+  slug            String   @unique
+  createdByUserId String
+  ownerUserId     String
+  avatarUrl       String?
+
+  creator     User                     @relation("OrganizationCreator", fields: [createdByUserId], references: [id])
+  owner       User                     @relation("OrganizationOwner", fields: [ownerUserId], references: [id])
+  memberships OrganizationMembership[]
+
+  // Tracking OS Relations
+  actors       Actor[]
+  records      Record[]
+  transactions Transaction[]
+
+  // Interpretation Layer
+  recordGroups   RecordGroup[]
+  workspaceNodes WorkspaceNode[]
+
+  @@index([slug], map: "idx_organization_slug")
+  @@index([ownerUserId], map: "idx_organization_owner")
+}
+
+model OrganizationMembership {
+  id               String       @id @default(cuid())
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+  organizationSlug String
+  userId           String
+  organization     Organization @relation(fields: [organizationSlug], references: [slug], onDelete: Cascade)
+  user             User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationSlug, userId])
+  @@index([userId, organizationSlug], map: "idx_membership_user")
+}
+
+// ------------------------------------------------------
+// EXCOLOG TRACKING OS DOMAIN MODELS
+// ------------------------------------------------------
+
+// 1. ACTOR: WHO is involved
+model Actor {
+  id               String   @id @default(cuid())
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  organizationSlug String
+  createdByUserId  String?
+
+  referenceNo String? // Human readable code
+  type        String // e.g. "CUSTOMER", "SUPPLIER", "EMPLOYEE"
+  name        String
+  isActive    Boolean @default(true)
+
+  metadata Json     @default("{}") // Flexible data (email, phone, tax details, attachments)
+  tags     String[] @default([])
+
+  // Relations
+  organization Organization      @relation(fields: [organizationSlug], references: [slug], onDelete: Cascade)
+  creator      User?             @relation(fields: [createdByUserId], references: [id])
+  transactions TransactionLine[]
+
+  @@index([organizationSlug, createdAt], map: "idx_actor_org_created")
+  @@index([organizationSlug, type], map: "idx_actor_org_type")
+  @@index([organizationSlug, type, referenceNo], map: "idx_actor_org_type_ref")
+}
+
+// 2. RECORD: WHAT is being tracked
+model Record {
+  id               String   @id @default(cuid())
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  organizationSlug String
+  ownerUserId      String // Explicit hard ownership
+  createdByUserId  String?
+  parentId         String? // Hierarchical nesting (e.g., Building -> Floor -> AC Unit)
+  recordGroupId    String? // Optional link to interpretation layer
+
+  referenceNo String? // Human readable code
+  type        String // e.g. "PRODUCT", "MACHINE", "CART", "LEASE"
+  name        String
+  isActive    Boolean @default(true)
+
+  metadata Json     @default("{}") // Flexible data (price, status, configuration, attachments)
+  tags     String[] @default([])
+
+  // Relations
+  organization Organization      @relation(fields: [organizationSlug], references: [slug], onDelete: Cascade)
+  owner        User              @relation("RecordOwner", fields: [ownerUserId], references: [id])
+  creator      User?             @relation("RecordCreator", fields: [createdByUserId], references: [id])
+  recordGroup  RecordGroup?      @relation(fields: [recordGroupId], references: [id], onDelete: SetNull)
+  parent       Record?           @relation("RecordToRecord", fields: [parentId], references: [id])
+  children     Record[]          @relation("RecordToRecord")
+  shares       RecordShare[]
+  transactions TransactionLine[]
+
+  @@index([organizationSlug, createdAt], map: "idx_record_org_created")
+  @@index([organizationSlug, ownerUserId], map: "idx_record_org_owner")
+  @@index([organizationSlug, type], map: "idx_record_org_type")
+  @@index([organizationSlug, type, referenceNo], map: "idx_record_org_type_ref")
+  @@index([parentId], map: "idx_record_parent")
+  @@index([recordGroupId], map: "idx_record_group")
+}
+
+model RecordShare {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  recordId String
+
+  sharedByUserId   String
+  sharedWithUserId String
+
+  role   ShareRole   @default(VIEWER)
+  status ShareStatus @default(PENDING) // Must be ACCEPTED to show in standard lists
+
+  record     Record @relation(fields: [recordId], references: [id], onDelete: Cascade)
+  sharedBy   User   @relation("RecordSharedBy", fields: [sharedByUserId], references: [id], onDelete: Cascade)
+  sharedWith User   @relation("RecordSharedWith", fields: [sharedWithUserId], references: [id], onDelete: Cascade)
+
+  @@unique([recordId, sharedWithUserId], map: "idx_share_unique_target")
+  @@index([sharedWithUserId, status], map: "idx_share_with_status")
+}
+
+// 3. TRANSACTION: The Event or The Blueprint
+model Transaction {
+  id               String   @id @default(cuid())
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  organizationSlug String
+  createdByUserId  String?
+
+  referenceNo     String? // Invoice No, Receipt No, etc.
+  transactionDate DateTime          @default(now())
+  status          TransactionStatus @default(DRAFT)
+  description     String?
+
+  currency             CurrencyCode
+  exchangeRateSnapshot Float? // Rate at the time of transaction
+
+  // Recurring / Scheduling Fields
+  isRecurring Boolean   @default(false)
+  startDate   DateTime? // Replaces standard transactionDate if it's a period start
+  endDate     DateTime? // Optional end of the recurring period
+  frequency   String? // e.g., "MONTHLY", "WEEKLY", "DAILY"
+
+  // Self-Relation for Executions inheriting from a Template
+  recurringTemplateId String?
+  recurringTemplate   Transaction?  @relation("TemplateToExecution", fields: [recurringTemplateId], references: [id])
+  executions          Transaction[] @relation("TemplateToExecution")
+
+  metadata Json     @default("{}") // e.g. SchemaType, Attachments, Notes
+  tags     String[] @default([])
+
+  // Relations
+  organization Organization      @relation(fields: [organizationSlug], references: [slug], onDelete: Cascade)
+  creator      User?             @relation(fields: [createdByUserId], references: [id])
+  lines        TransactionLine[]
+
+  @@index([organizationSlug, createdAt], map: "idx_transaction_org_created")
+  @@index([organizationSlug, referenceNo], map: "idx_transaction_org_ref")
+  @@index([organizationSlug, transactionDate], map: "idx_transaction_org_date")
+  @@index([organizationSlug, status], map: "idx_transaction_org_status")
+  @@index([organizationSlug, startDate], map: "idx_transaction_org_start")
+  @@index([organizationSlug, isRecurring, startDate, endDate], map: "idx_transaction_recurring")
+}
+
+// 4. TRANSACTION LINE: The Event Detail (Directional Math Engine)
+model TransactionLine {
+  id            String   @id @default(cuid())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  transactionId String
+
+  actorId  String? // Optional: Who is involved in this line
+  recordId String? // Optional: What is involved in this line
+
+  amount BigInt? // Can be null for non-financial logs /// @zod.custom.use(z.string())
+
+  // Directional Math Logic
+  direction       Direction       @default(NEUTRAL) // INCOME, EXPENSE, NEUTRAL
+  calculationType CalculationType @default(FIXED) // FIXED, PERCENTAGE
+  effect          Effect          @default(ADD) // ADD, SUBTRACT
+
+  metadata Json @default("{}") // Custom line details
+
+  // Relations
+  transaction Transaction @relation(fields: [transactionId], references: [id], onDelete: Cascade)
+  actor       Actor?      @relation(fields: [actorId], references: [id])
+  record      Record?     @relation(fields: [recordId], references: [id])
+
+  @@index([transactionId], map: "idx_txline_transaction")
+  @@index([actorId], map: "idx_txline_actor")
+  @@index([recordId], map: "idx_txline_record")
+}
+
+// 5. EXCHANGE RATE: Live rates cache
+model ExchangeRate {
+  id        String       @id @default(cuid())
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  currency  CurrencyCode @unique
+  rate      Float
+  source    String?      @default("manual")
+
+  @@index([currency], map: "idx_exchange_rate_currency")
+}
+
+// ------------------------------------------------------
+// ENUMS
+// ------------------------------------------------------
+
+enum CurrencyCode {
+  TRY
+  EUR
+  USD
+  GBP
+}
+
+enum TransactionStatus {
+  DRAFT
+  PENDING
+  COMPLETED
+  CANCELLED
+}
+
+enum Direction {
+  INCOME
+  EXPENSE
+  NEUTRAL
+}
+
+enum CalculationType {
+  FIXED
+  PERCENTAGE
+}
+
+enum Effect {
+  ADD
+  SUBTRACT
+}
+
+enum ShareStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  SPAM
+}
+
+enum ShareRole {
+  VIEWER
+  EDITOR
+}
+
+// ------------------------------------------------------
+// OPTIONAL INTERPRETATION LAYER (Starter Packs & Record Groups)
+// ------------------------------------------------------
+
+model RecordGroup {
+  id             String @id @default(cuid())
+  organizationId String
+
+  definitionKey String // links to in-code definition
+  customLabel   String?
+
+  workspaceNodeId String? // links to spatial workspace
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  records      Record[]
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId], map: "idx_recordgroup_org")
+}
+
+model WorkspaceNode {
+  id             String @id @default(cuid())
+  organizationId String
+
+  type  String // "recordGroup"
+  refId String // RecordGroup.id
+
+  posX Float
+  posY Float
+
+  createdAt DateTime @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId], map: "idx_workspacenode_org")
+}

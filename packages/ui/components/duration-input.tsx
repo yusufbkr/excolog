@@ -2,9 +2,9 @@
 
 import { ChangeEvent, ComponentProps, useEffect, useState } from "react";
 
-import { Input } from "@repo/ui/components/input";
-import cn from "@repo/ui/utils/cn";
-import dayjs from "@repo/ui/utils/dayjs";
+import { Input } from "@excolog/ui/components/input";
+import cn from "@excolog/ui/utils/cn";
+import dayjs from "@excolog/ui/utils/dayjs";
 
 type TimeUnit = "seconds" | "minutes" | "hours";
 
@@ -143,7 +143,7 @@ function DurationInput({
                   "text-center pr-8 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [-moz-appearance:textfield]",
               }}
             />
-            <span className="text-muted-foreground pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-xs">
+            <span className="text-muted-foreground pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-xs">
               {unit.prefix}
             </span>
           </div>

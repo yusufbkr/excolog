@@ -1,18 +1,12 @@
 {
-  "name": "@repo/constants",
+  "name": "@excolog/constants",
   "type": "module",
   "exports": {
-    ".": {
-      "types": "./dist/constants.d.ts",
-      "default": "./dist/constants.js"
-    }
+    ".": "./src/index.ts"
   },
-  "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch"
-  },
+  "scripts": {},
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
+    "@excolog/typescript-config": "workspace:*",
     "typescript": "^5.8.3"
   }
 }

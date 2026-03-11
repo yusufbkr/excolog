@@ -1,6 +1,6 @@
 import { usePathname } from "next/navigation";
 
-import { IconListProps } from "@repo/ui/components/icon";
+import { IconListProps } from "@excolog/ui/components/icon";
 
 interface BaseSidebarItemProps {
   itemType: "default" | "sub-container";

@@ -13,7 +13,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ReactQueryStreamedHydration } from "@tanstack/react-query-next-experimental";
 
 import getErrorMessages from "@/utils/get-error-messages";
-import createToastMessages from "@repo/ui/utils/create-toast-messages";
+import createToastMessages from "@excolog/ui/utils/create-toast-messages";
 
 function onError(error: Error) {
   const errorMessage =

@@ -2,8 +2,8 @@
 
 import { ComponentProps, useEffect, useState, RefObject } from "react";
 
-import Icon, { IconListProps } from "@repo/ui/components/icon";
-import cn from "@repo/ui/utils/cn";
+import Icon, { IconListProps } from "@excolog/ui/components/icon";
+import cn from "@excolog/ui/utils/cn";
 
 export type ScrollIndicatorPosition = "left" | "right" | "top" | "bottom";
 
@@ -88,7 +88,7 @@ function ScrollIndicator({
         className,
         "pointer-events-none absolute z-20 bg-transparent",
         "flex size-6 items-center justify-center opacity-0 transition-opacity",
-        "before:bg-background before:absolute before:inset-0 before:rounded-full before:blur-xs before:content-['']",
+        "before:bg-background before:blur-xs before:absolute before:inset-0 before:rounded-full before:content-['']",
         animationClasses[position],
         shouldShow && "opacity-100",
       )}

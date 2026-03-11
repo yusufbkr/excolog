@@ -4,8 +4,8 @@ import { ComponentProps } from "react";
 
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 
-import Icon from "@repo/ui/components/icon";
-import cn from "@repo/ui/utils/cn";
+import Icon from "@excolog/ui/components/icon";
+import cn from "@excolog/ui/utils/cn";
 
 function Checkbox({
   className,
@@ -15,7 +15,7 @@ function Checkbox({
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        "peer border-input dark:bg-input/30 aria-checked:bg-primary aria-checked:text-primary-foreground dark:aria-checked:bg-primary aria-checked:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 cursor-pointer rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+        "border-input dark:bg-input/30 aria-checked:bg-primary aria-checked:text-primary-foreground dark:aria-checked:bg-primary aria-checked:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs peer size-4 shrink-0 cursor-pointer rounded-[4px] border outline-none transition-shadow focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
       {...props}

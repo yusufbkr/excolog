@@ -1,5 +1,5 @@
 {
-  "name": "@repo/ui",
+  "name": "@excolog/ui",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -57,8 +57,8 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@excolog/eslint-config": "workspace:*",
+    "@excolog/typescript-config": "workspace:*",
     "@tailwindcss/postcss": "^4",
     "@turbo/gen": "^2.8.16",
     "@types/latinize": "^0.2.18",

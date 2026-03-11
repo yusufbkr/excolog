@@ -10,11 +10,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@repo/ui/components/form";
-import { Input } from "@repo/ui/components/input";
-import { Loading } from "@repo/ui/components/loading";
-import { NumberInput } from "@repo/ui/components/number-input";
-import { Switch } from "@repo/ui/components/switch";
+} from "@excolog/ui/components/form";
+import { Input } from "@excolog/ui/components/input";
+import { Loading } from "@excolog/ui/components/loading";
+import { NumberInput } from "@excolog/ui/components/number-input";
+import { Switch } from "@excolog/ui/components/switch";
 
 import getTrueType from "@/utils/get-true-type";
 

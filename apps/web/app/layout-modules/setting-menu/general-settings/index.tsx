@@ -4,10 +4,10 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@repo/ui/components/dialog";
-import Icon from "@repo/ui/components/icon";
-import { Separator } from "@repo/ui/components/separator";
-import { Skeleton } from "@repo/ui/components/skeleton";
+} from "@excolog/ui/components/dialog";
+import Icon from "@excolog/ui/components/icon";
+import { Separator } from "@excolog/ui/components/separator";
+import { Skeleton } from "@excolog/ui/components/skeleton";
 
 import Field from "./field";
 

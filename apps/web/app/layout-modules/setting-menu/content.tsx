@@ -2,7 +2,7 @@
 
 import { Fragment, useState } from "react";
 
-import Icon, { IconListProps } from "@repo/ui/components/icon";
+import Icon, { IconListProps } from "@excolog/ui/components/icon";
 import {
   Select,
   SelectContent,
@@ -11,15 +11,15 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@repo/ui/components/select";
-import { Separator } from "@repo/ui/components/separator";
+} from "@excolog/ui/components/select";
+import { Separator } from "@excolog/ui/components/separator";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@repo/ui/components/tabs";
-import cn from "@repo/ui/utils/cn";
+} from "@excolog/ui/components/tabs";
+import cn from "@excolog/ui/utils/cn";
 
 import GeneralSettings from "./general-settings";
 

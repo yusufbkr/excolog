@@ -1,4 +1,4 @@
-import dayjs from "@repo/ui/utils/dayjs";
+import dayjs from "@excolog/ui/utils/dayjs";
 
 const DEFAULT_FORMAT = "DD MMMM YYYY";
 

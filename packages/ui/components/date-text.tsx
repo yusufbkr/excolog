@@ -1,5 +1,5 @@
-import cn from "@repo/ui/utils/cn";
-import dayjs from "@repo/ui/utils/dayjs";
+import cn from "@excolog/ui/utils/cn";
+import dayjs from "@excolog/ui/utils/dayjs";
 
 interface Props extends React.ComponentProps<"time"> {
   value?: string | Date | null;

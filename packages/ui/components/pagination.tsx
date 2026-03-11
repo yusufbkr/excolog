@@ -1,8 +1,8 @@
 import { ComponentProps } from "react";
 
-import { Button, buttonVariants } from "@repo/ui/components/button";
-import Icon from "@repo/ui/components/icon";
-import cn from "@repo/ui/utils/cn";
+import { Button, buttonVariants } from "@excolog/ui/components/button";
+import Icon from "@excolog/ui/components/icon";
+import cn from "@excolog/ui/utils/cn";
 
 function Pagination({ className, ...props }: ComponentProps<"nav">) {
   return (

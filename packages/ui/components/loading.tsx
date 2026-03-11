@@ -1,7 +1,7 @@
 import { ComponentProps } from "react";
 
-import Icon from "@repo/ui/components/icon";
-import cn from "@repo/ui/utils/cn";
+import Icon from "@excolog/ui/components/icon";
+import cn from "@excolog/ui/utils/cn";
 
 interface Props extends ComponentProps<"div"> {
   iconClassName?: string;

@@ -1,5 +1,5 @@
 {
-  "extends": "@repo/typescript-config/react-library.json",
+  "extends": "@excolog/typescript-config/react-library.json",
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "./dist",
@@ -8,7 +8,7 @@
     "moduleResolution": "Bundler",
     "target": "ES2022",
     "paths": {
-      "@repo/ui/*": ["./*"]
+      "@excolog/ui/*": ["./*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

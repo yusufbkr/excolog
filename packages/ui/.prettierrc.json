@@ -1,4 +1,4 @@
 {
-  "extends": "@repo/eslint-config/prettier",
+  "extends": "@excolog/eslint-config/prettier",
   "plugins": ["prettier-plugin-tailwindcss"]
 }

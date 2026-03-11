@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 
-import { SidebarInset } from "@repo/ui/components/sidebar";
+import { SidebarInset } from "@excolog/ui/components/sidebar";
 
 import AppSidebar from "./app-sidebar";
 

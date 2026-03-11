@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 
-import { Button } from "@repo/ui/components/button";
+import { Button } from "@excolog/ui/components/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@repo/ui/components/dropdown-menu";
-import Icon, { type IconListProps } from "@repo/ui/components/icon";
-import cn from "@repo/ui/utils/cn";
+} from "@excolog/ui/components/dropdown-menu";
+import Icon, { type IconListProps } from "@excolog/ui/components/icon";
+import cn from "@excolog/ui/utils/cn";
 
 import { iconList } from "./icon/icon-list";
 

@@ -4,16 +4,16 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@repo/ui/components/collapsible";
-import { Highlighter } from "@repo/ui/components/highlighter";
-import Icon from "@repo/ui/components/icon";
+} from "@excolog/ui/components/collapsible";
+import { Highlighter } from "@excolog/ui/components/highlighter";
+import Icon from "@excolog/ui/components/icon";
 import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from "@repo/ui/components/sidebar";
+} from "@excolog/ui/components/sidebar";
 
 import type { SidebarLinkProps } from "@/app/layout-modules/main-sidebar/use-sidebar-items";
 

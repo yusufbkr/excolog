@@ -4,8 +4,8 @@ import { Suspense, useEffect, useState } from "react";
 
 import { useTheme } from "next-themes";
 
-import Icon from "@repo/ui/components/icon";
-import { Switch } from "@repo/ui/components/switch";
+import Icon from "@excolog/ui/components/icon";
+import { Switch } from "@excolog/ui/components/switch";
 
 function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();

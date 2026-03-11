@@ -14,9 +14,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@repo/ui/components/alert-dialog";
-import { buttonVariants } from "@repo/ui/components/button";
-import Icon, { IconListProps } from "@repo/ui/components/icon";
+} from "@excolog/ui/components/alert-dialog";
+import { buttonVariants } from "@excolog/ui/components/button";
+import Icon, { IconListProps } from "@excolog/ui/components/icon";
 
 interface AlertProps {
   children: React.ReactNode;

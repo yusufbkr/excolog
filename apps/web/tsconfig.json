@@ -1,10 +1,10 @@
 {
-  "extends": "@repo/typescript-config/nextjs.json",
+  "extends": "@excolog/typescript-config/nextjs.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@repo/ui/*": ["../../packages/ui/*"]
+      "@excolog/ui/*": ["../../packages/ui/*"]
     },
     "allowJs": true,
     "jsx": "preserve",

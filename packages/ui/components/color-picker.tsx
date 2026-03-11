@@ -2,13 +2,13 @@
 
 import { HexColorPicker } from "react-colorful";
 
-import { Button } from "@repo/ui/components/button";
+import { Button } from "@excolog/ui/components/button";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@repo/ui/components/popover";
-import cn from "@repo/ui/utils/cn";
+} from "@excolog/ui/components/popover";
+import cn from "@excolog/ui/utils/cn";
 
 interface ColorPickerProps {
   value?: string;

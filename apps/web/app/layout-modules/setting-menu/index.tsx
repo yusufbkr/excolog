@@ -1,6 +1,6 @@
 "use client";
 
-import { Dialog, DialogContent } from "@repo/ui/components/dialog";
+import { Dialog, DialogContent } from "@excolog/ui/components/dialog";
 
 import SettingMenuContent from "./content";
 

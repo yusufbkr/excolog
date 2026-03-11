@@ -11,9 +11,9 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@repo/ui/components/breadcrumb";
-import { Separator } from "@repo/ui/components/separator";
-import { SidebarTrigger } from "@repo/ui/components/sidebar";
+} from "@excolog/ui/components/breadcrumb";
+import { Separator } from "@excolog/ui/components/separator";
+import { SidebarTrigger } from "@excolog/ui/components/sidebar";
 
 interface Props {
   title: string;

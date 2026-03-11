@@ -8,8 +8,8 @@ import {
   useRef,
 } from "react";
 
-import ScrollIndicator from "@repo/ui/components/scroll-indicator";
-import cn from "@repo/ui/utils/cn";
+import ScrollIndicator from "@excolog/ui/components/scroll-indicator";
+import cn from "@excolog/ui/utils/cn";
 
 interface Props extends TableHTMLAttributes<HTMLTableElement> {
   wrapperProps?: HTMLAttributes<HTMLDivElement>;
@@ -45,7 +45,7 @@ function Table({
         <ScrollIndicator
           ref={containerRef}
           position="right"
-          className="top-2 right-1"
+          className="right-1 top-2"
         />
       )}
     </>
@@ -115,7 +115,7 @@ function TableHead({ className, ...props }: ComponentProps<"th">) {
     <th
       data-slot="table-head"
       className={cn(
-        "text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+        "text-foreground h-10 whitespace-nowrap px-2 text-left align-middle font-medium [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
         className,
       )}
       {...props}
@@ -131,7 +131,7 @@ function TableCell({
     <td
       data-slot="table-cell"
       className={cn(
-        "p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+        "whitespace-nowrap p-2 align-middle [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
         className,
       )}
       {...props}

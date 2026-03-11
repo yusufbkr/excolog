@@ -5,11 +5,11 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@repo/ui/components/command";
-import Icon from "@repo/ui/components/icon";
-import { MultiSelectOption } from "@repo/ui/components/multi-select";
-import { PopoverContent } from "@repo/ui/components/popover";
-import cn from "@repo/ui/utils/cn";
+} from "@excolog/ui/components/command";
+import Icon from "@excolog/ui/components/icon";
+import { MultiSelectOption } from "@excolog/ui/components/multi-select";
+import { PopoverContent } from "@excolog/ui/components/popover";
+import cn from "@excolog/ui/utils/cn";
 
 interface Props {
   searchable: boolean;

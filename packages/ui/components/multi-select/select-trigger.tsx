@@ -1,9 +1,9 @@
-import { Badge } from "@repo/ui/components/badge";
-import { Button } from "@repo/ui/components/button";
-import Icon from "@repo/ui/components/icon";
-import { MultiSelectOption } from "@repo/ui/components/multi-select/index";
-import { PopoverTrigger } from "@repo/ui/components/popover";
-import cn from "@repo/ui/utils/cn";
+import { Badge } from "@excolog/ui/components/badge";
+import { Button } from "@excolog/ui/components/button";
+import Icon from "@excolog/ui/components/icon";
+import { MultiSelectOption } from "@excolog/ui/components/multi-select/index";
+import { PopoverTrigger } from "@excolog/ui/components/popover";
+import cn from "@excolog/ui/utils/cn";
 
 interface Props {
   selectedOptions: MultiSelectOption[];

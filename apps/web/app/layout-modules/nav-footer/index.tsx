@@ -6,7 +6,7 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@repo/ui/components/avatar";
+} from "@excolog/ui/components/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,15 +15,15 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@repo/ui/components/dropdown-menu";
-import Icon from "@repo/ui/components/icon";
+} from "@excolog/ui/components/dropdown-menu";
+import Icon from "@excolog/ui/components/icon";
 import {
   SidebarFooter,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@repo/ui/components/sidebar";
+} from "@excolog/ui/components/sidebar";
 
 import ThemeToggle from "@/components/theme-toggle";
 

@@ -1,6 +1,6 @@
 import { toast, ToasterProps } from "sonner";
 
-import Icon from "@repo/ui/components/icon";
+import Icon from "@excolog/ui/components/icon";
 
 interface Props {
   messages: string[];

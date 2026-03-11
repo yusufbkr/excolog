@@ -2,8 +2,8 @@
 
 import { DateRange } from "react-day-picker";
 
-import { Calendar } from "@repo/ui/components/calendar";
-import { Popover, PopoverContent } from "@repo/ui/components/popover";
+import { Calendar } from "@excolog/ui/components/calendar";
+import { Popover, PopoverContent } from "@excolog/ui/components/popover";
 
 import { DatePickerTrigger } from "./components/date-picker-trigger";
 import { useDatePicker } from "./hooks/use-date-picker";

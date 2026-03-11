@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import dayjs from "@repo/ui/utils/dayjs";
+import dayjs from "@excolog/ui/utils/dayjs";
 
 interface UseDatePickerOptions {
   disablePast?: boolean;

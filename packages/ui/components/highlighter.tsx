@@ -1,4 +1,4 @@
-import latinize from "@repo/ui/utils/latinize";
+import latinize from "@excolog/ui/utils/latinize";
 
 interface HighlighterProps {
   text: string;

@@ -1,0 +1,25 @@
+{
+  "name": "@excolog/database",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "db:generate": "prisma generate"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.0",
+    "kysely": "^0.28.8",
+    "pg": "^8.13.3",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@excolog/typescript-config": "workspace:*",
+    "@types/node": "^25.4.0",
+    "@types/pg": "^8.11.11",
+    "prisma": "^6.19.0",
+    "prisma-kysely": "^2.2.1",
+    "typescript": "^5.8.3",
+    "zod-prisma-types": "^3.3.5"
+  }
+}

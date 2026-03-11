@@ -1,0 +1,11 @@
+{
+  "extends": ["@excolog/typescript-config/base.json"],
+  "compilerOptions": {
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "skipLibCheck": true
+  },
+  "include": ["src", "prisma", "types"],
+  "exclude": ["node_modules", "dist"]
+}

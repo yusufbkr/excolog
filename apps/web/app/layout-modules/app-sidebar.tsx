@@ -11,7 +11,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProps,
-} from "@repo/ui/components/sidebar";
+} from "@excolog/ui/components/sidebar";
 
 import MainSidebar from "./main-sidebar";
 import NavFooter from "./nav-footer";

@@ -2,7 +2,7 @@ import { ComponentType } from "react";
 
 import { IconBaseProps } from "react-icons";
 
-import cn from "@repo/ui/utils/cn";
+import cn from "@excolog/ui/utils/cn";
 
 import { iconList } from "./icon-list";
 

@@ -10,11 +10,11 @@
     "cssVariables": true
   },
   "aliases": {
-    "components": "@repo/ui/components",
-    "utils": "@repo/ui/utils",
-    "hooks": "@repo/ui/hooks",
-    "lib": "@repo/ui/utils",
-    "ui": "@repo/ui/components"
+    "components": "@excolog/ui/components",
+    "utils": "@excolog/ui/utils",
+    "hooks": "@excolog/ui/hooks",
+    "lib": "@excolog/ui/utils",
+    "ui": "@excolog/ui/components"
   },
   "iconLibrary": "lucide"
 }

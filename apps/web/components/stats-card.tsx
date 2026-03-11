@@ -3,9 +3,9 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "@repo/ui/components/card";
-import { Skeleton } from "@repo/ui/components/skeleton";
-import cn from "@repo/ui/utils/cn";
+} from "@excolog/ui/components/card";
+import { Skeleton } from "@excolog/ui/components/skeleton";
+import cn from "@excolog/ui/utils/cn";
 
 interface StatsCardProps {
   title: string;

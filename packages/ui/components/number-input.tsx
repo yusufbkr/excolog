@@ -1,8 +1,8 @@
 import { ChangeEvent, ComponentProps } from "react";
 
-import { Input } from "@repo/ui/components/input";
-import { Slider } from "@repo/ui/components/slider";
-import cn from "@repo/ui/utils/cn";
+import { Input } from "@excolog/ui/components/input";
+import { Slider } from "@excolog/ui/components/slider";
+import cn from "@excolog/ui/utils/cn";
 
 interface Props extends ComponentProps<"input"> {
   onBlur?: (e?: ChangeEvent<HTMLInputElement>) => void;

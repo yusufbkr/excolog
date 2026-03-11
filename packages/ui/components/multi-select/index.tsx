@@ -2,8 +2,8 @@
 
 import { useMemo, useState } from "react";
 
-import { IconListProps } from "@repo/ui/components/icon";
-import { Popover } from "@repo/ui/components/popover";
+import { IconListProps } from "@excolog/ui/components/icon";
+import { Popover } from "@excolog/ui/components/popover";
 
 import SelectContent from "./select-content";
 import SelectTrigger from "./select-trigger";
