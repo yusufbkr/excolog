@@ -63,7 +63,7 @@ function QueryProvider({ children }: PropsWithChildren) {
   const queryClient = getQueryClient();
   const { session, customerSession, setSession } = useSession();
 
-  const newToken = customerSession?.token || session?.token;
+  const token = customerSession?.token || session?.token;
 
   // Stale closure'ı önlemek için ref kullan
   const sessionRef = useRef(session);
@@ -71,29 +71,11 @@ function QueryProvider({ children }: PropsWithChildren) {
     sessionRef.current = session;
   }, [session]);
 
-  const requestCallback = useCallback(
-    (config: any) => {
-      try {
-        const headers = new Headers(config.headers);
-        // Panel (katılımcı/müşteri) sayfaları kendi token'ını kullanır; Supabase token ekleme
-        // Böylece org girişi yapılmış olsa bile panel API istekleri panel token ile gider
-        if (newToken && !headers.has("Authorization")) {
-          headers.set("Authorization", `Bearer ${newToken}`);
-        }
-        config.headers = headers;
-      } catch (err) {
-        console.error("Failed to get token for request:", err);
-      }
-      return config;
-    },
-    [newToken],
-  );
+  client.interceptors.request.use((config) => {
+    config.headers.set("Authorization", `Bearer ${token}`);
 
-  useEffect(() => {
-    client.interceptors.request.eject(requestCallback);
-
-    client.interceptors.request.use(requestCallback);
-  }, [requestCallback, newToken]);
+    return config;
+  });
 
   return (
     <QueryClientProvider client={queryClient}>
